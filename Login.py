@@ -12,6 +12,40 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
+     
+     #
+     # STYLES
+     #
+    styleLineEditOK = ("QLineEdit {\n"
+"    border: 2px solid rgb(45, 45, 45);\n"
+"    border-radius: 5px;\n"
+"    padding: 15px;\n"
+"    background-color: rgb(30, 30, 30);    \n"
+"    color: rgb(100, 100, 100);\n"
+"}\n"
+"QLineEdit:hover {\n"
+"    border: 2px solid rgb(55, 55, 55);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid rgb(255, 207, 0);    \n"
+"    color: rgb(200, 200, 200);\n"
+"}")
+
+    styleLineEditError = ("QLineEdit {\n"
+"    border: 2px solid rgb(255, 85, 127);\n"
+"    border-radius: 5px;\n"
+"    padding: 15px;\n"
+"    background-color: rgb(30, 30, 30);    \n"
+"    color: rgb(100, 100, 100);\n"
+"}\n"
+"QLineEdit:hover {\n"
+"    border: 2px solid rgb(55, 55, 55);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"    border: 2px solid rgb(255, 207, 0);    \n"
+"    color: rgb(200, 200, 200);\n"
+"}")
+     
      #
      #FUNCTIONS
      #
@@ -27,14 +61,18 @@ class Ui_MainWindow(object):
         # CHECK USER
         if not self.lineEdit_user.text():
                 textUser = "User Empyt."
+                self.lineEdit_user.setStyleSheet(self.styleLineEditError)
         else:
                 textUser = ""
+                self.lineEdit_user.setStyleSheet(self.styleLineEditOK)
         
         #CHECK PASSWORD
         if not self.lineEdit_password.text():
                 textPassword = "Password Empyt."
+                self.lineEdit_password.setStyleSheet(self.styleLineEditError)
         else:
                 textPassword = ""
+                self.lineEdit_password.setStyleSheet(self.styleLineEditOK)
 
         
         # CHECK FIELDS
@@ -156,20 +194,10 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.lineEdit_user.setFont(font)
-        self.lineEdit_user.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid rgb(45, 45, 45);\n"
-"    border-radius: 5px;\n"
-"    padding: 15px;\n"
-"    background-color: rgb(30, 30, 30);    \n"
-"    color: rgb(100, 100, 100);\n"
-"}\n"
-"QLineEdit:hover {\n"
-"    border: 2px solid rgb(55, 55, 55);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"    border: 2px solid rgb(255, 207, 0);    \n"
-"    color: rgb(200, 200, 200);\n"
-"}")
+
+        ###Mostra que o erro esta no usuario
+        self.lineEdit_user.setStyleSheet(self.styleLineEditOK)
+
         self.lineEdit_user.setMaxLength(32)
         self.lineEdit_user.setObjectName("lineEdit_user")
         self.lineEdit_password = QtWidgets.QLineEdit(self.login_bar)
@@ -181,20 +209,10 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.lineEdit_password.setFont(font)
-        self.lineEdit_password.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid rgb(45, 45, 45);\n"
-"    border-radius: 5px;\n"
-"    padding: 15px;\n"
-"    background-color: rgb(30, 30, 30);    \n"
-"    color: rgb(100, 100, 100);\n"
-"}\n"
-"QLineEdit:hover {\n"
-"    border: 2px solid rgb(55, 55, 55);\n"
-"}\n"
-"QLineEdit:focus {\n"
-"    border: 2px solid rgb(255, 207, 0);    \n"
-"    color: rgb(200, 200, 200);\n"
-"}")
+
+        #mostrar que o erro esta no password
+        self.lineEdit_password.setStyleSheet(self.styleLineEditOK)
+
         self.lineEdit_password.setMaxLength(16)
         self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_password.setObjectName("lineEdit_password")
