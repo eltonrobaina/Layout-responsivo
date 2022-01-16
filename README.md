@@ -1,2 +1,2 @@
 # Layout-responsivo
- Com python q PyQt
+ Com python com PyQt5
