@@ -45,7 +45,9 @@ class Ui_MainWindow(object):
 "    border: 2px solid rgb(255, 207, 0);    \n"
 "    color: rgb(200, 200, 200);\n"
 "}")
-     
+    stylePopupError = ("background-color: rgb(255, 85, 127); border-radius: 5px;")
+    stylePopupOK = ("background-color: rgb(0, 255, 123); border-radius: 5px;")
+
      #
      #FUNCTIONS
      #
@@ -79,11 +81,14 @@ class Ui_MainWindow(object):
         if textUser + textPassword != '':
                 text = textUser + textPassword
                 showMessage(text)
+                self.frame_error.setStyleSheet(self.stylePopupError)
         else:
                 text = "Login OK."
                 if self.checkBox_save_user.isChecked():
                         text = text + " | Saver user: OK" 
                 showMessage(text)
+                self.frame_error.setStyleSheet(self.stylePopupOK)
+
 
 
 
@@ -115,8 +120,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.frame_error = QtWidgets.QFrame(self.top_bar)
         self.frame_error.setMaximumSize(QtCore.QSize(450, 16777215))
-        self.frame_error.setStyleSheet("background-color: rgb(255, 85, 127);\n"
-"border-radius: 5px;")
+        
+        # Estilo do frame de erro
+        self.frame_error.setStyleSheet(self.stylePopupError)
+
         self.frame_error.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_error.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_error.setObjectName("frame_error")
